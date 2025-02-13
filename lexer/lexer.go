@@ -20,10 +20,10 @@ func New(input string) *Lexer {
 func (l *Lexer) readChar() {
 	if l.nextPosition >= len(l.input) {
 		l.currentChar = 0
-		return
+	} else {
+		l.currentChar = l.input[l.nextPosition]
 	}
 
-	l.currentChar = l.input[l.nextPosition]
 	l.currentPosition = l.nextPosition
 	l.nextPosition += 1
 }
