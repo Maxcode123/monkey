@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"io"
 	"monkey/lexer"
-  "monkey/parser"
+	"monkey/parser"
 )
 
 const PROMPT = ">> "
@@ -22,16 +22,16 @@ func Start(in io.Reader, out io.Writer) {
 
 		line := scanner.Text()
 		l := lexer.New(line)
-    p := parser.New(l)
+		p := parser.New(l)
 
-    program := p.ParseProgram()
-    if len(p.Errors()) != 0 {
-      printParserErrors(out, p.Errors())
-      continue
-    }
+		program := p.ParseProgram()
+		if len(p.Errors()) != 0 {
+			printParserErrors(out, p.Errors())
+			continue
+		}
 
-    io.WriteString(out, program.String())
-    io.WriteString(out, "\n")
+		io.WriteString(out, program.String())
+		io.WriteString(out, "\n")
 	}
 }
 
